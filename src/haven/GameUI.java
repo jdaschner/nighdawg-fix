@@ -1888,6 +1888,8 @@ public class GameUI extends ConsoleHost implements Console.Directory, UI.Notice.
 	public static KeyBinding kb_aggroLastTarget = KeyBinding.get("aggroLastTarget",  KeyMatch.forchar('T', KeyMatch.S));
 	public static KeyBinding kb_peaceCurrentTarget  = KeyBinding.get("peaceCurrentTargetKB",  KeyMatch.forchar('P', KeyMatch.M));
 	public static KeyBinding kb_miniStudy = KeyBinding.get("miniStudyKB",  KeyMatch.forchar('S', KeyMatch.M));
+	public static KeyBinding kb_cheeseDistance = KeyBinding.get("cheeseDistance",  KeyMatch.forchar('K', 0));
+
     public boolean globtype(GlobKeyEvent ev) {
 	if(ev.c == ':') {
 	    entercmd();
@@ -2108,6 +2110,9 @@ public class GameUI extends ConsoleHost implements Console.Directory, UI.Notice.
 	} else if((ev.c == 27) && (map != null) && !map.hasfocus) {
 	    setfocus(map);
 	    return(true);
+	} else if (kb_cheeseDistance.key().match(ev)) {
+		new Thread(new KillPosition(this), "KillPosition").start();
+		return(true);
 	}
 	return(super.globtype(ev));
     }

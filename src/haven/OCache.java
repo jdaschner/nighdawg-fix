@@ -243,6 +243,10 @@ public class OCache implements Iterable<Gob> {
 	}
     }
 
+	public Gob[] getallgobs() {
+		return objs.values().toArray(new Gob[0]);
+	}
+
     @dolda.jglob.Discoverable
     @Target(ElementType.TYPE)
     @Retention(RetentionPolicy.RUNTIME)
