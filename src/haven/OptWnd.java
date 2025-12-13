@@ -2854,6 +2854,7 @@ public class OptWnd extends Window {
 		y = addbtn(cont, "Instant Log Out", GameUI.kb_instantLogout, y);
 		y+=UI.scale(20);
 		y = addbtn(cont, "Cheese Distance", GameUI.kb_cheeseDistance, y);
+		y = addbtn(cont, "Auto-Reaggro UI Toggle", GameUI.kb_autoReaggroToggle, y);
 
 		prev = adda(new PointBind(UI.scale(200)), scroll.pos("bl").adds(0, 10).x(scroll.sz.x / 2), 0.5, 0.0);
 	    prev = adda(new PButton(UI.scale(200), "Back", 27, back, "Options            "), prev.pos("bl").adds(0, 10).x(scroll.sz.x / 2), 0.5, 0.0);

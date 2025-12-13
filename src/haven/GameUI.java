@@ -1889,6 +1889,7 @@ public class GameUI extends ConsoleHost implements Console.Directory, UI.Notice.
 	public static KeyBinding kb_peaceCurrentTarget  = KeyBinding.get("peaceCurrentTargetKB",  KeyMatch.forchar('P', KeyMatch.M));
 	public static KeyBinding kb_miniStudy = KeyBinding.get("miniStudyKB",  KeyMatch.forchar('S', KeyMatch.M));
 	public static KeyBinding kb_cheeseDistance = KeyBinding.get("cheeseDistance",  KeyMatch.forchar('K', 0));
+	public static KeyBinding kb_autoReaggroToggle = KeyBinding.get("autoReaggroToggleKB",  KeyMatch.forchar('P', KeyMatch.S));
 
     public boolean globtype(GlobKeyEvent ev) {
 	if(ev.c == ':') {

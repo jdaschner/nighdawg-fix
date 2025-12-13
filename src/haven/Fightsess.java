@@ -880,6 +880,10 @@ public class Fightsess extends Widget {
 	    fv.wdgmsg("bump", (int)fv.lsrel.get(0).gobid);
 	    return(true);
 	}
+		if (GameUI.kb_autoReaggroToggle.key().match(ev) && fv.current != null && fv.current.autogive != null) {
+			fv.current.autogive.remoteTrigger();
+			return(true);
+		}
 	return(super.globtype(ev));
     }
 

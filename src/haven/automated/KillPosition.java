@@ -53,7 +53,6 @@ public class KillPosition implements Runnable {
         animal.put("gfx/kritter/cavelouse/cavelouse", 3.0);
         animal.put("gfx/kritter/orca/orca", 30.25);
         animal.put("gfx/kritter/boar/boar", 6.1);
-        animal.put("gfx/borka/body", 8.0);
     }
 
     @Override
