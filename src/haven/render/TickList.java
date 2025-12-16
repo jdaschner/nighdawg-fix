@@ -127,15 +127,19 @@ public class TickList implements RenderList<TickList.TickNode> {
 	synchronized(cur) {
 	    copy = new ArrayList<>(cur.values());
 	}
-	Consumer<Entry> task = ent -> {
-	    if(ent.mon == null) {
-		ent.tick.autotick(dt);
-	    } else {
-		synchronized(ent.mon) {
-		    ent.tick.autotick(dt);
-		}
-	    }
-	};
+		Consumer<Entry> task = ent -> {
+			try {
+				if(ent.mon == null) {
+					ent.tick.autotick(dt);
+				} else {
+					synchronized(ent.mon) {
+						ent.tick.autotick(dt);
+					}
+				}
+			} catch(RenderTree.SlotRemoved e) {
+				/* Slot was removed concurrently; ignore */
+			}
+		};
 	if(!Config.par.get())
 	    copy.forEach(task);
 	else
@@ -147,15 +151,19 @@ public class TickList implements RenderList<TickList.TickNode> {
 	synchronized(cur) {
 	    copy = new ArrayList<>(cur.values());
 	}
-	BiConsumer<Entry, Render> task = (ent, out) -> {
-	    if(ent.mon == null) {
-		ent.tick.autogtick(out);
-	    } else {
-		synchronized(ent.mon) {
-		    ent.tick.autogtick(out);
-		}
-	    }
-	};
+		BiConsumer<Entry, Render> task = (ent, out) -> {
+			try {
+				if(ent.mon == null) {
+					ent.tick.autogtick(out);
+				} else {
+					synchronized(ent.mon) {
+						ent.tick.autogtick(out);
+					}
+				}
+			} catch(RenderTree.SlotRemoved e) {
+				/* Slot was removed concurrently; ignore */
+			}
+		};
 	if(!Config.par.get()) {
 	    copy.forEach(ent -> task.accept(ent, g));
 	} else {
